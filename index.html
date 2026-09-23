@@ -504,28 +504,112 @@
             z-index: 1;
         }
 
-        .purpose-flow {
-            display: flex;
+
+        .purpose-mini {
+            display: inline-flex;
             align-items: center;
             gap: 10px;
             margin-top: 24px;
             position: relative;
             z-index: 1;
-            flex-wrap: wrap;
-        }
-
-        .purpose-flow span {
-            padding: 8px 12px;
+            padding: 10px 13px;
             border-radius: 999px;
-            background: rgba(255, 255, 255, 0.1);
-            font-size: 0.7rem;
-            font-weight: 800;
+            background: rgba(255,255,255,0.1);
             color: #ffffff;
+            font-size: 0.72rem;
+            font-weight: 800;
+        }
+        .purpose-mini i { color: var(--gold-light); }
+
+
+        /* Resumen y tarjetas de gestión */
+        .management-summary {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+        .summary-chip {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 13px 15px;
+            border-radius: 15px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            box-shadow: 0 7px 20px rgba(11,31,51,.045);
+        }
+        .summary-chip i {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+        }
+        .summary-chip strong {
+            font-size: 1.25rem;
+            color: var(--navy);
+        }
+        .summary-chip span {
+            font-size: .78rem;
+            color: var(--muted);
+            font-weight: 700;
+        }
+        .summary-chip.done i { background:#e7f8f0; color:#13865d; }
+        .summary-chip.progress i { background:#fff3df; color:#b66b12; }
+        .summary-chip.neutral i { background:#edf1f5; color:#5e6d7c; }
+
+        .filters .filter span {
+            opacity: .72;
+            margin-left: 4px;
+            font-size: .68rem;
         }
 
-        .purpose-flow i {
-            font-size: 10px;
-            color: var(--gold-light);
+        .project {
+            min-height: 205px;
+        }
+        .project:focus-visible {
+            outline: 3px solid rgba(31,111,235,.28);
+            outline-offset: 3px;
+        }
+
+        .project-footer i {
+            margin-right: 4px;
+        }
+
+        .overall-state {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+            margin-bottom: 24px;
+            padding: 17px 19px;
+            border-radius: 17px;
+            background: linear-gradient(135deg, #f7fbff, #eef6ff);
+            border: 1px solid #dceaff;
+        }
+        .overall-state-icon {
+            width: 49px;
+            height: 49px;
+            flex: 0 0 49px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: var(--blue);
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 10px 20px rgba(31,111,235,.16);
+        }
+        .overall-state strong {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            color: var(--navy);
+        }
+        .overall-state small {
+            display: block;
+            margin-top: 2px;
+            font-size: .78rem;
+            color: var(--muted);
         }
 
         /* Comunidad Feliz */
@@ -1500,6 +1584,32 @@
             }
         }
         
+
+        @media (max-width: 700px) {
+            .management-summary {
+                grid-template-columns: 1fr;
+            }
+            .summary-chip {
+                padding: 12px 14px;
+            }
+            .purpose-card {
+                grid-template-columns: 1fr;
+            }
+            .purpose-copy,
+            .purpose-side {
+                padding: 28px 24px;
+            }
+            .projects-grid {
+                gap: 14px;
+            }
+            .project {
+                min-height: 0;
+            }
+            .overall-state {
+                align-items: flex-start;
+            }
+        }
+
         /* Menú móvil abierto */
         .nav-links.mobile-open {
             display: flex;
@@ -1556,29 +1666,44 @@
 
     <!-- Estadísticas -->
     <div class="stats reveal">
-        <div class="stat"><i class="fa-solid fa-list-check"></i><div class="stat-number counter" data-target="18">0</div><div class="stat-label">Gestiones registradas</div></div>
-        <div class="stat"><i class="fa-solid fa-circle-check"></i><div class="stat-number counter" data-target="14">0</div><div class="stat-label">Gestiones finalizadas</div></div>
-        <div class="stat"><i class="fa-solid fa-screwdriver-wrench"></i><div class="stat-number counter" data-target="6">0</div><div class="stat-label">Proyectos en ejecución</div></div>
-        <div class="stat"><i class="fa-solid fa-building"></i><div class="stat-number counter" data-target="5">0</div><div class="stat-label">Áreas de gestión</div></div>
+        <div class="stat">
+            <i class="fa-solid fa-list-check"></i>
+            <div class="stat-number counter" data-target="39">0</div>
+            <div class="stat-label">Gestiones registradas</div>
+        </div>
+        <div class="stat">
+            <i class="fa-solid fa-circle-check"></i>
+            <div class="stat-number counter" data-target="38">0</div>
+            <div class="stat-label">Gestiones realizadas</div>
+        </div>
+        <div class="stat">
+            <i class="fa-solid fa-hourglass-half"></i>
+            <div class="stat-number counter" data-target="1">0</div>
+            <div class="stat-label">Gestión en proceso</div>
+        </div>
+        <div class="stat">
+            <i class="fa-solid fa-layer-group"></i>
+            <div class="stat-number counter" data-target="4">0</div>
+            <div class="stat-label">Áreas de gestión</div>
+        </div>
     </div>
 
     <!-- Propósito -->
+
     <section id="proposito" class="reveal">
         <div class="purpose-card">
             <div class="purpose-copy">
-                <span class="purpose-kicker">Informe semestral · Transparencia y continuity</span>
-                <h3>Una gestión que se informa, se documenta y se entrega.</h3>
-                <p>Este informe tiene como finalidad presentar semestralmente a la comunidad el trabajo realizado por el Comité de Administración, mostrar sus avances y mantener a todos informados sobre el estado del condominio.</p>
-                <p>Además, esta base quedará disponible para los siguientes Comités, para que puedan continuarla, adaptarla y comunicar a la comunidad los avances de su propia gestión.</p>
+                <span class="purpose-kicker">Informe semestral · Transparencia y continuidad</span>
+                <h3>Una gestión que queremos compartir con la comunidad.</h3>
+                <p>Este informe busca informar semestralmente a nuestros vecinos sobre lo realizado por el Comité, sus avances y las materias que continúan en proceso.</p>
+                <p>También dejamos esta base para los próximos Comités, para que puedan adaptarla a su propia forma de trabajar y seguir comunicando su gestión a la comunidad.</p>
             </div>
             <div class="purpose-side">
-                <h4>Una base para los próximos Comités</h4>
-                <p>La idea es que este formato pueda ser entregado a quienes continúen, para que lo hagan propio y lo utilicen de la manera que mejor represente su gestión.</p>
-                <div class="purpose-flow">
-                    <span>Informar</span><i class="fa-solid fa-arrow-right"></i>
-                    <span>Registrar</span><i class="fa-solid fa-arrow-right"></i>
-                    <span>Continuar</span><i class="fa-solid fa-arrow-right"></i>
-                    <span>Entregar</span>
+                <h4>Para quienes continúen</h4>
+                <p>La idea es simple: que la información y el trabajo realizado no se pierdan con cada cambio de Comité, y que quienes sigan puedan hacer de este formato algo propio.</p>
+                <div class="purpose-mini">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Continuidad · Cercanía · Información</span>
                 </div>
             </div>
         </div>
@@ -1588,78 +1713,533 @@
     <section id="gestion" class="reveal">
         <div class="section-head">
             <div>
-                <div class="eyebrow">Trabajo realizado</div>
+                <div class="eyebrow">Trabajo del período</div>
                 <h2 class="section-title">Gestiones y proyectos</h2>
             </div>
-            <p class="section-desc">Un recorrido por las principales iniciativas impulsadas, coordinadas y gestionadas durante el período.</p>
+            <p class="section-desc">39 gestiones registradas: 38 realizadas y 1 en proceso. Haz clic en cada tarjeta para conocer el detalle.</p>
         </div>
+
+        <div class="management-summary">
+            <div class="summary-chip done"><i class="fa-solid fa-circle-check"></i><strong>38</strong><span>Realizadas</span></div>
+            <div class="summary-chip progress"><i class="fa-solid fa-spinner"></i><strong>1</strong><span>En proceso</span></div>
+            <div class="summary-chip neutral"><i class="fa-solid fa-layer-group"></i><strong>4</strong><span>Áreas de gestión</span></div>
+        </div>
+
         <div class="filters">
-            <button class="filter active" onclick="filterProjects('all',this)">Todas</button>
-            <button class="filter" onclick="filterProjects('seguridad',this)">Seguridad</button>
-            <button class="filter" onclick="filterProjects('infra',this)">Infraestructura</button>
-            <button class="filter" onclick="filterProjects('areas',this)">Áreas verdes</button>
-            <button class="filter" onclick="filterProjects('admin',this)">Administración</button>
+            <button class="filter active" onclick="filterProjects('all',this)">Todas <span>39</span></button>
+            <button class="filter" onclick="filterProjects('infra',this)">Infraestructura <span>17</span></button>
+            <button class="filter" onclick="filterProjects('areas',this)">Áreas verdes <span>7</span></button>
+            <button class="filter" onclick="filterProjects('seguridad',this)">Seguridad <span>11</span></button>
+            <button class="filter" onclick="filterProjects('admin',this)">Administración <span>4</span></button>
         </div>
-        <div class="grid">
-            <article class="project" data-category="seguridad" onclick="openProjectModal('Acceso Biométrico Peatonal','Implementación y coordinación de mejoras asociadas al control de acceso peatonal mediante tecnología biométrica.','Seguridad','Gestionándose')">
-                <div class="project-top"><div class="project-icon"><i class="fa-solid fa-fingerprint"></i></div><span class="status progress">Gestionándose</span></div>
-                <h3>Acceso Biométrico Peatonal</h3>
-                <p>Mejora del sistema de control de acceso para residentes y usuarios autorizados.</p>
-                <div class="project-footer"><span>Seguridad</span><span>Ver detalle &rarr;</span></div>
+
+        <div class="grid projects-grid">
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Mantención de grifos","Se realizó una jornada de trabajo en comunidad para la mantención de los grifos del condominio, contando con la participación de varios vecinos voluntarios que colaboraron activamente en los trabajos, logrando realizar esta mantención sin costo para la comunidad.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Mantención de grifos","Se realizó una jornada de trabajo en comunidad para la mantención de los grifos del condominio, contando con la participación de varios vecinos voluntarios que colaboraron activamente en los trabajos, logrando realizar esta mantención sin costo para la comunidad.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-faucet-drip"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Mantención de grifos</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
             </article>
-            <article class="project" data-category="seguridad" onclick="openProjectModal('Sistema Federal Access','Coordinación de implementación de sistema de accesos mediante códigos QR dinámicos y mecanismos de autorización.','Seguridad','En ejecución')">
-                <div class="project-top"><div class="project-icon"><i class="fa-solid fa-qrcode"></i></div><span class="status progress">En ejecución</span></div>
-                <h3>Sistema Federal Access</h3>
-                <p>Modernización del control de accesos y autorización de visitas.</p>
-                <div class="project-footer"><span>Seguridad</span><span>Ver detalle &rarr;</span></div>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Recuperación del portón principal","Se recuperó y reparó completamente el portón luego del robo y posterior choque, incluyendo la reparación de las barreras de acceso en tiempo récord.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Recuperación del portón principal","Se recuperó y reparó completamente el portón luego del robo y posterior choque, incluyendo la reparación de las barreras de acceso en tiempo récord.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-door-open"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Recuperación del portón principal</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
             </article>
-            <article class="project" data-category="seguridad" onclick="openProjectModal('Cerco Eléctrico Recuperado','Trabajos orientados a recuperar el funcionamiento y continuidad del sistema de protección perimetral.','Seguridad','Finalizado')">
-                <div class="project-top"><div class="project-icon"><i class="fa-solid fa-bolt"></i></div><span class="status done">Finalizado</span></div>
-                <h3>Cerco Eléctrico Recuperado</h3>
-                <p>Recuperación y coordinación de trabajos sobre el perímetro eléctrico.</p>
-                <div class="project-footer"><span>Seguridad</span><span>Ver detalle &rarr;</span></div>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Mantención colectores aguas lluvias","Se realizó una jornada de trabajo junto a vecinos voluntarios para efectuar la mantención de los colectores de aguas lluvias, logrando ejecutar estos trabajos sin costo para la comunidad.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Mantención colectores aguas lluvias","Se realizó una jornada de trabajo junto a vecinos voluntarios para efectuar la mantención de los colectores de aguas lluvias, logrando ejecutar estos trabajos sin costo para la comunidad.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-cloud-rain"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Mantención colectores aguas lluvias</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
             </article>
-            <article class="project" data-category="seguridad" onclick="openProjectModal('Portones y Barreras','Revisión y coordinación de mejoras relacionadas con portones, barreras y continuidad operacional del acceso.','Seguridad','Finalizado')">
-                <div class="project-top"><div class="project-icon"><i class="fa-solid fa-road-barrier"></i></div><span class="status done">Finalizado</span></div>
-                <h3>Portones y Barreras</h3>
-                <p>Gestiones destinadas a mejorar la continuidad y seguridad de los accesos.</p>
-                <div class="project-footer"><span>Seguridad</span><span>Ver detalle &rarr;</span></div>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Renovación de luminarias","Se gestionó el cambio de luminarias en distintos sectores del condominio, generando ahorros en la compra de equipos, elevador y trabajos eléctricos.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Renovación de luminarias","Se gestionó el cambio de luminarias en distintos sectores del condominio, generando ahorros en la compra de equipos, elevador y trabajos eléctricos.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Renovación de luminarias</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
             </article>
-            <article class="project" data-category="infra" onclick="openProjectModal('Generador de Respaldo','Coordinación de gestiones relacionadas con generación eléctrica de respaldo para situaciones de contingencia.','Infraestructura','En ejecución')">
-                <div class="project-top"><div class="project-icon"><i class="fa-solid fa-power-off"></i></div><span class="status progress">En ejecución</span></div>
-                <h3>Generador de Respaldo</h3>
-                <p>Proyecto destinado a aumentar la continuidad operacional ante cortes eléctricos.</p>
-                <div class="project-footer"><span>Infraestructura</span><span>Ver detalle &rarr;</span></div>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Actualización de barreras ZKT","Se actualizó el software de las barreras ZKT y se realizó correctamente la migración de la base de datos del sistema.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Actualización de barreras ZKT","Se actualizó el software de las barreras ZKT y se realizó correctamente la migración de la base de datos del sistema.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-arrows-rotate"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Actualización de barreras ZKT</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
             </article>
-            <article class="project" data-category="infra" onclick="openProjectModal('Reparación Tapa Enel','Gestión y coordinación de reparación de infraestructura eléctrica dañada.','Infraestructura','Finalizado')">
-                <div class="project-top"><div class="project-icon"><i class="fa-solid fa-wrench"></i></div><span class="status done">Finalizado</span></div>
-                <h3>Reparación Tapa Enel</h3>
-                <p>Coordinación de reparación reportada como gestión sin costo para la comunidad.</p>
-                <div class="project-footer"><span>Infraestructura</span><span>$0 informado</span></div>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Recuperación de fachadas","Se gestionó la recuperación de fachadas de viviendas que llevaban años pendientes de regularización.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Recuperación de fachadas","Se gestionó la recuperación de fachadas de viviendas que llevaban años pendientes de regularización.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-house"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Recuperación de fachadas</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
             </article>
-            <article class="project" data-category="areas" onclick="openProjectModal('Jardines y Podas','Coordinación y seguimiento de trabajos de recuperación, mantención y mejoramiento de áreas verdes.','Áreas verdes','En ejecución')">
-                <div class="project-top"><div class="project-icon"><i class="fa-solid fa-seedling"></i></div><span class="status progress">En ejecución</span></div>
-                <h3>Jardines y Podas</h3>
-                <p>Seguimiento de recuperación de sectores deteriorados y mantención general.</p>
-                <div class="project-footer"><span>Áreas verdes</span><span>Ver detalle &rarr;</span></div>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Emergencia del portón","Se resolvió una emergencia por daños en el portón durante un día domingo, coordinando directamente con proveedores ante la falta de disponibilidad de la administración anterior (CyT).","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Emergencia del portón","Se resolvió una emergencia por daños en el portón durante un día domingo, coordinando directamente con proveedores ante la falta de disponibilidad de la administración anterior (CyT).","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Emergencia del portón</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
             </article>
-            <article class="project" data-category="areas" onclick="openProjectModal('Sector de Basureros','Gestiones para ordenar, recuperar y mejorar las condiciones del sector de disposición de residuos.','Áreas verdes','Gestionándose')">
-                <div class="project-top"><div class="project-icon"><i class="fa-solid fa-trash-can"></i></div><span class="status progress">Gestionándose</span></div>
-                <h3>Sector de Basureros</h3>
-                <p>Mejoras de orden, limpieza y condiciones generales del sector.</p>
-                <div class="project-footer"><span>Áreas verdes</span><span>Ver detalle &rarr;</span></div>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Reparación de tablero eléctrico","Se realizó la mantención y reparación del tablero eléctrico ubicado frente a la casa 12, que llevaba más de un año sin protección diferencial y presentaba fallas producto de instalaciones deficientes.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Reparación de tablero eléctrico","Se realizó la mantención y reparación del tablero eléctrico ubicado frente a la casa 12, que llevaba más de un año sin protección diferencial y presentaba fallas producto de instalaciones deficientes.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-table-columns"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Reparación de tablero eléctrico</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
             </article>
-            <article class="project" data-category="admin" onclick="openProjectModal('Auditoría de Gastos','Revisión permanente de gastos comunes, contratos, servicios y antecedentes administrativos para mejorar la transparencia y control.','Administración','Permanente')">
-                <div class="project-top"><div class="project-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div><span class="status pending">Permanente</span></div>
-                <h3>Auditoría de Gastos</h3>
-                <p>Revisión de antecedentes económicos y administrativos de la comunidad.</p>
-                <div class="project-footer"><span>Administración</span><span>Ver detalle &rarr;</span></div>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Automatización de iluminación","Se realizó la mantención e instalación de timers horarios en los tableros de iluminación interior, permitiendo automatizar los horarios de encendido y apagado y evitando el uso de fotoceldas, que se dañaban constantemente producto de la exposición al sol y la lluvia.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Automatización de iluminación","Se realizó la mantención e instalación de timers horarios en los tableros de iluminación interior, permitiendo automatizar los horarios de encendido y apagado y evitando el uso de fotoceldas, que se dañaban constantemente producto de la exposición al sol y la lluvia.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-clock"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Automatización de iluminación</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
             </article>
-            <article class="project" data-category="admin" onclick="openProjectModal('Actualización del Reglamento','Gestión y coordinación del proceso de actualización, votación y posterior formalización del reglamento de la comunidad.','Administración','Finalizado')">
-                <div class="project-top"><div class="project-icon"><i class="fa-solid fa-file-signature"></i></div><span class="status done">Finalizado</span></div>
-                <h3>Actualización del Reglamento</h3>
-                <p>Proceso de actualización normativa y formalización de los acuerdos comunitarios.</p>
-                <div class="project-footer"><span>Administración</span><span>Ver detalle &rarr;</span></div>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Mantención de aire acondicionado","Se realizó la mantención del equipo de aire acondicionado de la caseta de guardias.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Mantención de aire acondicionado","Se realizó la mantención del equipo de aire acondicionado de la caseta de guardias.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-snowflake"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Mantención de aire acondicionado</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Mantención de barreras de acceso","Se realizaron trabajos de mantención en las barreras vehiculares para asegurar su correcto funcionamiento. Además, se logró reparar una de las barreras que se encontraba dañada, evitando tener que reemplazar y comprar el equipo completo.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Mantención de barreras de acceso","Se realizaron trabajos de mantención en las barreras vehiculares para asegurar su correcto funcionamiento. Además, se logró reparar una de las barreras que se encontraba dañada, evitando tener que reemplazar y comprar el equipo completo.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-road-barrier"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Mantención de barreras de acceso</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Proyecto de nuevo acceso","Se dio inicio al estudio para la modificación y mejoramiento del acceso al condominio. (Acordado en asamblea)","Infraestructura","En proceso")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Proyecto de nuevo acceso","Se dio inicio al estudio para la modificación y mejoramiento del acceso al condominio. (Acordado en asamblea)","Infraestructura","En proceso")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-route"></i></div>
+                    <span class="status progress">En proceso</span>
+                </div>
+                <h3>Proyecto de nuevo acceso</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Radier para generador","Se construyó el radier destinado al generador eléctrico, trabajo realizado sin costo para la comunidad como aporte del comité.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Radier para generador","Se construyó el radier destinado al generador eléctrico, trabajo realizado sin costo para la comunidad como aporte del comité.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Radier para generador</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Iluminación plaza de juegos","Se instaló nueva iluminación en la plaza de juegos, mejorando su visibilidad y utilización durante horarios de menor luz.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Iluminación plaza de juegos","Se instaló nueva iluminación en la plaza de juegos, mejorando su visibilidad y utilización durante horarios de menor luz.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-gamepad"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Iluminación plaza de juegos</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Conmutador para generador","Se instaló un sistema de conmutación que permite activar el generador eléctrico ante cortes del suministro de energía.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Conmutador para generador","Se instaló un sistema de conmutación que permite activar el generador eléctrico ante cortes del suministro de energía.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-toggle-on"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Conmutador para generador</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Protección para generador","Se instaló un techo de protección para resguardar el generador eléctrico de las condiciones climáticas.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Protección para generador","Se instaló un techo de protección para resguardar el generador eléctrico de las condiciones climáticas.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-umbrella"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Protección para generador</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="infra" tabindex="0"
+                onclick='openProjectModal("Radier sector de basureros","Se construyó un nuevo radier en el sector de basureros, mejorando las condiciones de uso, limpieza y mantención del espacio.","Infraestructura","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Radier sector de basureros","Se construyó un nuevo radier en el sector de basureros, mejorando las condiciones de uso, limpieza y mantención del espacio.","Infraestructura","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-trash-can"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Radier sector de basureros</h3>
+                <div class="project-footer">
+                    <span>Infraestructura</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="areas" tabindex="0"
+                onclick='openProjectModal("Recuperación de plazas centrales","Se realizó el mejoramiento e intervención de las tres plazas centrales ubicadas en el jardín delantero del condominio.","Áreas verdes","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Recuperación de plazas centrales","Se realizó el mejoramiento e intervención de las tres plazas centrales ubicadas en el jardín delantero del condominio.","Áreas verdes","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-tree"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Recuperación de plazas centrales</h3>
+                <div class="project-footer">
+                    <span>Áreas verdes</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="areas" tabindex="0"
+                onclick='openProjectModal("Mejoramiento de jardines","Se realizaron trabajos de recuperación, mantención y poda en diferentes jardines y áreas verdes.","Áreas verdes","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Mejoramiento de jardines","Se realizaron trabajos de recuperación, mantención y poda en diferentes jardines y áreas verdes.","Áreas verdes","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Mejoramiento de jardines</h3>
+                <div class="project-footer">
+                    <span>Áreas verdes</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="areas" tabindex="0"
+                onclick='openProjectModal("Mejoramiento sector de basureros","Se intervino y mejoró el sector destinado a los basureros, buscando mantener un espacio más limpio y ordenado.","Áreas verdes","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Mejoramiento sector de basureros","Se intervino y mejoró el sector destinado a los basureros, buscando mantener un espacio más limpio y ordenado.","Áreas verdes","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-trash-can"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Mejoramiento sector de basureros</h3>
+                <div class="project-footer">
+                    <span>Áreas verdes</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="areas" tabindex="0"
+                onclick='openProjectModal("Desratización de áreas comunes","Se realizó un servicio de desratización preventiva y de control en distintos sectores comunes del condominio.","Áreas verdes","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Desratización de áreas comunes","Se realizó un servicio de desratización preventiva y de control en distintos sectores comunes del condominio.","Áreas verdes","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-bug-slash"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Desratización de áreas comunes</h3>
+                <div class="project-footer">
+                    <span>Áreas verdes</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="areas" tabindex="0"
+                onclick='openProjectModal("Reparación del sistema de riego","Se detectaron y corrigieron filtraciones existentes en el sistema de riego de las áreas verdes.","Áreas verdes","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Reparación del sistema de riego","Se detectaron y corrigieron filtraciones existentes en el sistema de riego de las áreas verdes.","Áreas verdes","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-droplet"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Reparación del sistema de riego</h3>
+                <div class="project-footer">
+                    <span>Áreas verdes</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="areas" tabindex="0"
+                onclick='openProjectModal("Poda general del condominio","Se ejecutó una poda general en sectores que llevaban años sin recibir una mantención adecuada.","Áreas verdes","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Poda general del condominio","Se ejecutó una poda general en sectores que llevaban años sin recibir una mantención adecuada.","Áreas verdes","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-scissors"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Poda general del condominio</h3>
+                <div class="project-footer">
+                    <span>Áreas verdes</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="areas" tabindex="0"
+                onclick='openProjectModal("Recuperación de sectores exteriores","Se realizaron trabajos de limpieza y poda en sectores exteriores al condominio que llevaban más de un año abandonados.","Áreas verdes","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Recuperación de sectores exteriores","Se realizaron trabajos de limpieza y poda en sectores exteriores al condominio que llevaban más de un año abandonados.","Áreas verdes","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-broom"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Recuperación de sectores exteriores</h3>
+                <div class="project-footer">
+                    <span>Áreas verdes</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="seguridad" tabindex="0"
+                onclick='openProjectModal("Nuevas fotoceldas de seguridad","Se mejoraron e instalaron nuevas fotoceldas en el portón principal, aumentando la seguridad durante su apertura y cierre.","Seguridad","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Nuevas fotoceldas de seguridad","Se mejoraron e instalaron nuevas fotoceldas en el portón principal, aumentando la seguridad durante su apertura y cierre.","Seguridad","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-sun"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Nuevas fotoceldas de seguridad</h3>
+                <div class="project-footer">
+                    <span>Seguridad</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="seguridad" tabindex="0"
+                onclick='openProjectModal("Reparación de cortocircuitos","Se detectaron y repararon cortocircuitos en postes de iluminación que presentaban fallas durante episodios de lluvia.","Seguridad","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Reparación de cortocircuitos","Se detectaron y repararon cortocircuitos en postes de iluminación que presentaban fallas durante episodios de lluvia.","Seguridad","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Reparación de cortocircuitos</h3>
+                <div class="project-footer">
+                    <span>Seguridad</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="seguridad" tabindex="0"
+                onclick='openProjectModal("Nuevo protocolo de acceso","Se creó e implementó un protocolo de acceso para los guardias, estableciendo procedimientos claros para residentes, visitas y proveedores.","Seguridad","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Nuevo protocolo de acceso","Se creó e implementó un protocolo de acceso para los guardias, estableciendo procedimientos claros para residentes, visitas y proveedores.","Seguridad","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-list-check"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Nuevo protocolo de acceso</h3>
+                <div class="project-footer">
+                    <span>Seguridad</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="seguridad" tabindex="0"
+                onclick='openProjectModal("Nueva señalética informativa","Se instalaron letreros informativos en la caseta de guardias y en los accesos vehicular y peatonal.","Seguridad","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Nueva señalética informativa","Se instalaron letreros informativos en la caseta de guardias y en los accesos vehicular y peatonal.","Seguridad","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-signs-post"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Nueva señalética informativa</h3>
+                <div class="project-footer">
+                    <span>Seguridad</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="seguridad" tabindex="0"
+                onclick='openProjectModal("Reductores de velocidad","Se gestionó la compra e instalación de barreras reductoras de velocidad para mejorar la seguridad vial al interior del condominio.","Seguridad","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Reductores de velocidad","Se gestionó la compra e instalación de barreras reductoras de velocidad para mejorar la seguridad vial al interior del condominio.","Seguridad","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-road"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Reductores de velocidad</h3>
+                <div class="project-footer">
+                    <span>Seguridad</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="seguridad" tabindex="0"
+                onclick='openProjectModal("Sirenas de seguridad","Se instalaron sirenas de seguridad como medida adicional de prevención y respuesta ante emergencias.","Seguridad","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Sirenas de seguridad","Se instalaron sirenas de seguridad como medida adicional de prevención y respuesta ante emergencias.","Seguridad","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-bell"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Sirenas de seguridad</h3>
+                <div class="project-footer">
+                    <span>Seguridad</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="seguridad" tabindex="0"
+                onclick='openProjectModal("Recuperación del cerco eléctrico","Se reparó y volvió a poner en funcionamiento el cerco eléctrico perimetral, que llevaba más de un año inactivo.","Seguridad","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Recuperación del cerco eléctrico","Se reparó y volvió a poner en funcionamiento el cerco eléctrico perimetral, que llevaba más de un año inactivo.","Seguridad","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Recuperación del cerco eléctrico</h3>
+                <div class="project-footer">
+                    <span>Seguridad</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="seguridad" tabindex="0"
+                onclick='openProjectModal("Protocolos con empresa de seguridad","Se trabajó junto a la empresa de seguridad en la creación y actualización de protocolos para mejorar el control y funcionamiento del servicio.","Seguridad","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Protocolos con empresa de seguridad","Se trabajó junto a la empresa de seguridad en la creación y actualización de protocolos para mejorar el control y funcionamiento del servicio.","Seguridad","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-user-shield"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Protocolos con empresa de seguridad</h3>
+                <div class="project-footer">
+                    <span>Seguridad</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="seguridad" tabindex="0"
+                onclick='openProjectModal("Implementación de Federal Access","Se implementó el sistema Federal Access, incorporando códigos QR para mejorar y modernizar el control de ingreso al condominio.","Seguridad","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Implementación de Federal Access","Se implementó el sistema Federal Access, incorporando códigos QR para mejorar y modernizar el control de ingreso al condominio.","Seguridad","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-qrcode"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Implementación de Federal Access</h3>
+                <div class="project-footer">
+                    <span>Seguridad</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="seguridad" tabindex="0"
+                onclick='openProjectModal("Reparación de tapa Enel","El comité realizó la reparación de la tapa ubicada en la vereda, solucionando una situación que llevaba varios meses pendiente y que representaba un riesgo para quienes transitaban por el sector.","Seguridad","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Reparación de tapa Enel","El comité realizó la reparación de la tapa ubicada en la vereda, solucionando una situación que llevaba varios meses pendiente y que representaba un riesgo para quienes transitaban por el sector.","Seguridad","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-wrench"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Reparación de tapa Enel</h3>
+                <div class="project-footer">
+                    <span>Seguridad</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="seguridad" tabindex="0"
+                onclick='openProjectModal("Acceso peatonal biométrico","Se instaló un nuevo sistema de control de acceso peatonal mediante reconocimiento facial y huella digital.","Seguridad","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Acceso peatonal biométrico","Se instaló un nuevo sistema de control de acceso peatonal mediante reconocimiento facial y huella digital.","Seguridad","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-fingerprint"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Acceso peatonal biométrico</h3>
+                <div class="project-footer">
+                    <span>Seguridad</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="admin" tabindex="0"
+                onclick='openProjectModal("Actualización del Reglamento de Copropiedad","Se llevó adelante el proceso de actualización del Reglamento de Copropiedad mediante consulta escrita, modernizando las normas que regulan la comunidad.","Administración","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Actualización del Reglamento de Copropiedad","Se llevó adelante el proceso de actualización del Reglamento de Copropiedad mediante consulta escrita, modernizando las normas que regulan la comunidad.","Administración","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-file-signature"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Actualización del Reglamento de Copropiedad</h3>
+                <div class="project-footer">
+                    <span>Administración</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="admin" tabindex="0"
+                onclick='openProjectModal("Eliminación de cobros improcedentes","Se revisaron gastos y reparaciones, detectando y eliminando cobros que no correspondían y evitando gastos innecesarios para la comunidad.","Administración","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Eliminación de cobros improcedentes","Se revisaron gastos y reparaciones, detectando y eliminando cobros que no correspondían y evitando gastos innecesarios para la comunidad.","Administración","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Eliminación de cobros improcedentes</h3>
+                <div class="project-footer">
+                    <span>Administración</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="admin" tabindex="0"
+                onclick='openProjectModal("Convenios de gastos comunes","Se autorizaron convenios de pago para propietarios con deuda de gastos comunes, facilitando la regularización de obligaciones pendientes.","Administración","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Convenios de gastos comunes","Se autorizaron convenios de pago para propietarios con deuda de gastos comunes, facilitando la regularización de obligaciones pendientes.","Administración","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Convenios de gastos comunes</h3>
+                <div class="project-footer">
+                    <span>Administración</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
+            </article>
+            <article class="project" data-category="admin" tabindex="0"
+                onclick='openProjectModal("Gestión de certificación de gas","Se realizó la coordinación, revisión y negociación de presupuestos para avanzar en el proceso de certificación de gas del condominio.","Administración","Realizado")'
+                onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Gestión de certificación de gas","Se realizó la coordinación, revisión y negociación de presupuestos para avanzar en el proceso de certificación de gas del condominio.","Administración","Realizado")'>
+                <div class="project-top">
+                    <div class="project-icon"><i class="fa-solid fa-fire-flame-simple"></i></div>
+                    <span class="status done">Realizado</span>
+                </div>
+                <h3>Gestión de certificación de gas</h3>
+                <div class="project-footer">
+                    <span>Administración</span>
+                    <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+                </div>
             </article>
         </div>
     </section>
@@ -1839,10 +2419,10 @@
             <p class="section-desc">Integrantes actuales del Comité de Administración.</p>
         </div>
         <div class="people-grid">
-            <div class="person"><div class="avatar">LT</div><h3>Lorena Trinidad</h3><p>Casa 82</p></div>
+            <div class="person"><div class="avatar">LT</div><h3>Lorena Trinidad</h3><p>Casa 8X</p></div>
             <div class="person"><div class="avatar">FT</div><h3>Francisco Torrealba</h3><p>Casa 15</p></div>
             <div class="person"><div class="avatar">FA</div><h3>Felipe Alarcón</h3><p>Casa 23</p></div>
-            <div class="person"><div class="avatar">RG</div><h3>Raúl GTD</h3><p>Casa 86</p></div>
+            <div class="person"><div class="avatar">RG</div><h3>Raúl GTD</h3><p>Casa 8X</p></div>
             <div class="person"><div class="avatar">DB</div><h3>Daniel Bautista</h3><p>Casa 17</p></div>
         </div>
     </section>
@@ -1863,39 +2443,73 @@
         </div>
     </section>
 
+
     <!-- Estado -->
     <section id="estado" class="reveal">
         <div class="section-head">
             <div>
-                <div class="eyebrow">Panel</div>
+                <div class="eyebrow">Resumen del período</div>
                 <h2 class="section-title">Estado general</h2>
             </div>
-            <p class="section-desc">Indicadores visuales de avance. Datos de muestra referenciales.</p>
+            <p class="section-desc">Los porcentajes reflejan matemáticamente la proporción de gestiones realizadas dentro de cada área.</p>
         </div>
+
+        <div class="overall-state">
+            <div class="overall-state-icon"><i class="fa-solid fa-chart-pie"></i></div>
+            <div>
+                <strong>97,4% de las gestiones realizadas</strong>
+                <small>38 de 39 gestiones completadas; 1 gestión permanece en proceso.</small>
+            </div>
+        </div>
+
         <div class="management">
             <div class="panel">
                 <h3>Avance por área</h3>
-                <div class="progress-row"><div class="progress-label"><span>Seguridad</span><span>90%</span></div><div class="progress-bar"><div class="progress-fill" style="width:0" data-width="90%"></div></div></div>
-                <div class="progress-row"><div class="progress-label"><span>Infraestructura</span><span>80%</span></div><div class="progress-bar"><div class="progress-fill" style="width:0" data-width="80%"></div></div></div>
-                <div class="progress-row"><div class="progress-label"><span>Áreas verdes</span><span>65%</span></div><div class="progress-bar"><div class="progress-fill" style="width:0" data-width="65%"></div></div></div>
-                <div class="progress-row"><div class="progress-label"><span>Administración</span><span>85%</span></div><div class="progress-bar"><div class="progress-fill" style="width:0" data-width="85%"></div></div></div>
+
+                <div class="progress-row">
+                    <div class="progress-label"><span>Infraestructura</span><span>94,1%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:0" data-width="94.1176%"></div></div>
+                </div>
+
+                <div class="progress-row">
+                    <div class="progress-label"><span>Áreas verdes y espacios comunes</span><span>100%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:0" data-width="100%"></div></div>
+                </div>
+
+                <div class="progress-row">
+                    <div class="progress-label"><span>Seguridad y control de acceso</span><span>100%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:0" data-width="100%"></div></div>
+                </div>
+
+                <div class="progress-row">
+                    <div class="progress-label"><span>Administración y gestión</span><span>100%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:0" data-width="100%"></div></div>
+                </div>
             </div>
+
             <div class="panel">
-                <h3>Principio de gestión</h3>
-                <p style="color:var(--muted);font-size:0.95rem">El objetivo es que cada gestión tenga trazabilidad: qué se detectó, qué se hizo, quién participa, cuál es el estado y qué queda pendiente.</p>
-                <div style="margin-top:24px;padding:20px;border-radius:16px;background:#f4f7fb; border: 1px solid var(--border);">
-                    <strong style="display:block;margin-bottom:8px;color:var(--navy);"><i class="fa-solid fa-magnifying-glass"></i> Transparencia</strong>
-                    <span style="font-size:0.85rem;color:var(--muted);line-height:1.5;display:block;">Incorporar fechas, costos, ahorros, fotografías, documentos y respaldos a medida que estén disponibles.</span>
+                <h3>Cómo leer este resultado</h3>
+                <p style="color:var(--muted);font-size:0.95rem">
+                    El porcentaje general se calcula sobre las 39 gestiones registradas en este informe:
+                    38 realizadas y 1 en proceso.
+                </p>
+
+                <div style="margin-top:24px;padding:20px;border-radius:16px;background:#f4f7fb; border:1px solid var(--border);">
+                    <strong style="display:block;margin-bottom:8px;color:var(--navy);">
+                        <i class="fa-solid fa-magnifying-glass"></i> Transparencia
+                    </strong>
+                    <span style="font-size:0.85rem;color:var(--muted);line-height:1.5;display:block;">
+                        Los porcentajes por área corresponden al número de gestiones realizadas respecto del total de gestiones de esa misma área.
+                    </span>
                 </div>
             </div>
         </div>
     </section>
-
 </main>
 
 <footer class="footer">
     <strong>Comité de Administración · Condominio Casas del Rahue I</strong>
-    <p>Informe de gestión · Versión web mejorada 2026</p>
+    <p>Informe de gestión semestral · Casas del Rahue I · 2026</p>
 </footer>
 
 <!-- Modales nativos (<dialog>) -->

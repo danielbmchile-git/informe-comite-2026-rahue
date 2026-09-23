@@ -1523,6 +1523,10 @@
         
 
         @media (max-width: 700px) {
+            /* Seguridad visual: nunca ocultar el contenido del informe en móvil. */
+            .reveal {
+                visibility: visible;
+            }
             .management-summary {
                 grid-template-columns: 1fr;
             }
@@ -2996,6 +3000,21 @@ body.report-open .period-cover{display:none}
         observer.observe(el);
     });
 
+    // Fallback especialmente para Safari/iOS: algunos navegadores móviles
+    // pueden no disparar IntersectionObserver de forma consistente cuando
+    // una sección estuvo detrás de una portada con display:none.
+    function activateMobileReveals() {
+        if (window.matchMedia('(max-width: 700px)').matches) {
+            document.querySelectorAll('.reveal').forEach((el, index) => {
+                setTimeout(() => el.classList.add('active'), index * 70);
+            });
+        }
+    }
+
+    window.addEventListener('load', () => {
+        setTimeout(activateMobileReveals, 120);
+    });
+
     // Contadores numéricos
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -3030,6 +3049,17 @@ body.report-open .period-cover{display:none}
         window.scrollTo({top:0, behavior:'instant'});
         const cover=document.getElementById('periodCover');
         if (cover) cover.classList.add('hidden');
+
+        // Reactiva las animaciones y asegura que todo el contenido del informe
+        // quede visible también en Safari/iOS después de cerrar la portada.
+        setTimeout(() => {
+            document.querySelectorAll('.reveal').forEach((el, index) => {
+                if (window.matchMedia('(max-width: 700px)').matches) {
+                    setTimeout(() => el.classList.add('active'), index * 55);
+                }
+            });
+        }, 80);
+
         history.replaceState(null, '', '#primer-semestre-2026-2027');
     }
 

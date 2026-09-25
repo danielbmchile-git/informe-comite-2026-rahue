@@ -1975,7 +1975,7 @@ body.report-open .period-cover{display:none}
 <div class="stats reveal">
 <div class="stat">
 <i class="fa-solid fa-list-check"></i>
-<div class="stat-number counter" data-target="41">0</div>
+<div class="stat-number counter" data-target="42">0</div>
 <div class="stat-label">Gestiones registradas</div>
 </div>
 <div class="stat">
@@ -1985,8 +1985,8 @@ body.report-open .period-cover{display:none}
 </div>
 <div class="stat">
 <i class="fa-solid fa-hourglass-half"></i>
-<div class="stat-number counter" data-target="1">0</div>
-<div class="stat-label">Gestión en proceso</div>
+<div class="stat-number counter" data-target="2">0</div>
+<div class="stat-label">Gestiones en proceso</div>
 </div>
 <div class="stat">
 <i class="fa-solid fa-ban"></i>
@@ -2020,19 +2020,19 @@ body.report-open .period-cover{display:none}
 <div class="eyebrow">Trabajo del período</div>
 <h2 class="section-title">Gestiones y proyectos</h2>
 </div>
-<p class="section-desc">41 gestiones registradas: 38 realizadas, 1 en proceso y 2 no aprobadas. Haz clic en cada tarjeta para conocer el detalle.</p>
+<p class="section-desc">42 gestiones registradas: 38 realizadas, 2 en proceso y 2 no aprobadas. Haz clic en cada tarjeta para conocer el detalle.</p>
 </div>
 <div class="management-summary">
 <div class="summary-chip done"><i class="fa-solid fa-circle-check"></i><strong>38</strong><span>Realizadas</span></div>
-<div class="summary-chip progress"><i class="fa-solid fa-spinner"></i><strong>1</strong><span>En proceso</span></div>
+<div class="summary-chip progress"><i class="fa-solid fa-spinner"></i><strong>2</strong><span>En proceso</span></div>
 <div class="summary-chip not-executed"><i class="fa-solid fa-ban"></i><strong>2</strong><span>No aprobadas</span></div>
 <div class="summary-chip neutral"><i class="fa-solid fa-layer-group"></i><strong>4</strong><span>Áreas de gestión</span></div>
 </div>
 <div class="filters">
-<button class="filter active" onclick="filterProjects('all',this)">Todas <span>41</span></button>
+<button class="filter active" onclick="filterProjects('all',this)">Todas <span>42</span></button>
 <button class="filter" onclick="filterProjects('infra',this)">Infraestructura <span>19</span></button>
 <button class="filter" onclick="filterProjects('areas',this)">Áreas verdes <span>7</span></button>
-<button class="filter" onclick="filterProjects('seguridad',this)">Seguridad <span>11</span></button>
+<button class="filter" onclick="filterProjects('seguridad',this)">Seguridad <span>12</span></button>
 <button class="filter" onclick="filterProjects('admin',this)">Administración <span>4</span></button>
 </div>
 <div class="grid projects-grid">
@@ -2444,6 +2444,17 @@ body.report-open .period-cover{display:none}
 <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
 </div>
 </article>
+<article class="project" data-category="seguridad" onclick='openProjectModal("Revisión semanal de cámaras","El jefe de operaciones realiza semanalmente una revisión del sistema de cámaras de seguridad, verificando su correcto funcionamiento y desempeño, con el objetivo de velar por el buen funcionamiento del condominio y fortalecer su monitoreo.","Seguridad","En proceso")' onkeydown='if(event.key==="Enter"||event.key===" ") openProjectModal("Revisión semanal de cámaras","El jefe de operaciones realiza semanalmente una revisión del sistema de cámaras de seguridad, verificando su correcto funcionamiento y desempeño, con el objetivo de velar por el buen funcionamiento del condominio y fortalecer su monitoreo.","Seguridad","En proceso")' tabindex="0">
+<div class="project-top">
+<div class="project-icon"><i class="fa-solid fa-video"></i></div>
+<span class="status progress">En proceso</span>
+</div>
+<h3>Revisión semanal de cámaras</h3>
+<div class="project-footer">
+<span>Seguridad</span>
+<span><i class="fa-regular fa-eye"></i> Ver descripción</span>
+</div>
+</article>
 <article class="project" data-category="admin" onclick='openProjectModal("Actualización del Reglamento de Copropiedad","Se llevó adelante el proceso de actualización del Reglamento de Copropiedad mediante consulta escrita, modernizando las normas que regulan la comunidad.","Administración","Realizado")' onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Actualización del Reglamento de Copropiedad","Se llevó adelante el proceso de actualización del Reglamento de Copropiedad mediante consulta escrita, modernizando las normas que regulan la comunidad.","Administración","Realizado")' tabindex="0">
 <div class="project-top">
 <div class="project-icon"><i class="fa-solid fa-file-signature"></i></div>
@@ -2753,8 +2764,8 @@ body.report-open .period-cover{display:none}
 <div class="overall-state">
 <div class="overall-state-icon"><i class="fa-solid fa-chart-pie"></i></div>
 <div>
-<strong>92,7% de las gestiones realizadas</strong>
-<small>38 de 41 gestiones realizadas; 1 permanece en proceso y 2 no fueron aprobadas.</small>
+<strong>90,5% de las gestiones realizadas</strong>
+<small>38 de 42 gestiones realizadas; 2 permanecen en proceso y 2 no fueron aprobadas.</small>
 </div>
 </div>
 <div class="management">
@@ -2769,8 +2780,8 @@ body.report-open .period-cover{display:none}
 <div class="progress-bar"><div class="progress-fill" data-width="100%" style="width:0"></div></div>
 </div>
 <div class="progress-row">
-<div class="progress-label"><span>Seguridad y control de acceso</span><span>100%</span></div>
-<div class="progress-bar"><div class="progress-fill" data-width="100%" style="width:0"></div></div>
+<div class="progress-label"><span>Seguridad y control de acceso</span><span>91,7%</span></div>
+<div class="progress-bar"><div class="progress-fill" data-width="91.6667%" style="width:0"></div></div>
 </div>
 <div class="progress-row">
 <div class="progress-label"><span>Administración y gestión</span><span>100%</span></div>
@@ -2779,7 +2790,7 @@ body.report-open .period-cover{display:none}
 </div>
 <div class="panel">
 <h3>Cómo leer este resultado</h3>
-<p style="color:var(--muted);font-size:0.95rem">El porcentaje general se calcula sobre las 41 gestiones registradas en este informe: 38 realizadas, 1 en proceso y 2 no aprobadas.</p>
+<p style="color:var(--muted);font-size:0.95rem">El porcentaje general se calcula sobre las 42 gestiones registradas en este informe: 38 realizadas, 2 en proceso y 2 no aprobadas.</p>
 <div style="margin-top:24px;padding:20px;border-radius:16px;background:#f4f7fb; border:1px solid var(--border);">
 <strong style="display:block;margin-bottom:8px;color:var(--navy);">
 <i class="fa-solid fa-magnifying-glass"></i> Transparencia
@@ -2886,7 +2897,7 @@ body.report-open .period-cover{display:none}
         // Colores según estado
         const st = document.getElementById('modalStatus');
         if(status === 'Finalizado') { st.style.background = '#e7f8f0'; st.style.color = '#13865d'; }
-        else if(status === 'En ejecución' || status === 'Gestionándose') { st.style.background = '#fff3df'; st.style.color = '#b66b12'; }
+        else if(status === 'En ejecución' || status === 'Gestionándose' || status === 'En proceso') { st.style.background = '#fff3df'; st.style.color = '#b66b12'; }
         else if(status === 'No ejecutado' || status === 'No aprobado') { st.style.background = '#fbe9e9'; st.style.color = '#b94a4a'; }
         else { st.style.background = '#f1f5f9'; st.style.color = 'var(--navy)'; }
 

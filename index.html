@@ -276,7 +276,7 @@
             position: relative;
             z-index: 5;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
         }
 
@@ -1481,7 +1481,10 @@
             }
             .stats {
                 margin-top: -30px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
+            .stat { padding: 20px 14px; }
+            .stat-number { font-size: 2rem; }
             section {
                 padding-top: 70px;
             }
@@ -1855,6 +1858,8 @@ body.report-open .period-cover{display:none}
         .maintenance-modal-info { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
         .maintenance-modal-info span { display:inline-flex; align-items:center; gap:6px; padding:8px 11px; border-radius:999px; background:#f1f5f9; color:var(--navy); font-size:.72rem; font-weight:800; }
         .maintenance-modal-info i { color:var(--blue); }
+        .calendar-cell.done { background:#e7f8f0; border-color:#b8e7d0; }
+        .calendar-cell.done .cs { color:#13865d; }
         .calendar-cell.next { background:#fff5e8; border-color:#f4cf9b; }
         .calendar-cell.next .cs { color:#b66b12; }
         .calendar-cell.scheduled { background:#eef6ff; border-color:#d6e8ff; }
@@ -1975,18 +1980,23 @@ body.report-open .period-cover{display:none}
 <div class="stats reveal">
 <div class="stat">
 <i class="fa-solid fa-list-check"></i>
-<div class="stat-number counter" data-target="42">0</div>
+<div class="stat-number counter" data-target="47">0</div>
 <div class="stat-label">Gestiones registradas</div>
 </div>
 <div class="stat">
 <i class="fa-solid fa-circle-check"></i>
-<div class="stat-number counter" data-target="38">0</div>
+<div class="stat-number counter" data-target="39">0</div>
 <div class="stat-label">Gestiones realizadas</div>
 </div>
 <div class="stat">
 <i class="fa-solid fa-hourglass-half"></i>
-<div class="stat-number counter" data-target="2">0</div>
+<div class="stat-number counter" data-target="5">0</div>
 <div class="stat-label">Gestiones en proceso</div>
+</div>
+<div class="stat">
+<i class="fa-solid fa-clipboard-question"></i>
+<div class="stat-number counter" data-target="1">0</div>
+<div class="stat-label">En evaluación</div>
 </div>
 <div class="stat">
 <i class="fa-solid fa-ban"></i>
@@ -2225,6 +2235,16 @@ body.report-open .period-cover{display:none}
 <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
 </div>
 </article>
+<article class="project" data-category="infra" onclick='openProjectModal("Regularización Novaguas y seguimiento de fugas","Se efectuó seguimiento a situaciones relacionadas con fugas de agua y su supervisión, considerando que algunas de estas situaciones generaron costos adicionales para la comunidad.","Infraestructura","En proceso")' onkeydown='if(event.key==="Enter"||event.key===" ") openProjectModal("Regularización Novaguas y seguimiento de fugas","Se efectuó seguimiento a situaciones relacionadas con fugas de agua y su supervisión, considerando que algunas de estas situaciones generaron costos adicionales para la comunidad.","Infraestructura","En proceso")' tabindex="0">
+<div class="project-top"><div class="project-icon"><i class="fa-solid fa-droplet"></i></div><span class="status progress">En proceso</span></div>
+<h3>Regularización Novaguas y seguimiento de fugas</h3>
+<div class="project-footer"><span>Infraestructura</span><span><i class="fa-regular fa-eye"></i> Ver descripción</span></div>
+</article>
+<article class="project" data-category="infra" onclick='openProjectModal("Evaluación de grietas en hormigón","Se inició una evaluación de las grietas existentes en sectores de hormigón del condominio, con el objetivo de determinar su alcance y garantizar una reparación oportuna, adecuada y de buena calidad.","Infraestructura","Evaluación")' onkeydown='if(event.key==="Enter"||event.key===" ") openProjectModal("Evaluación de grietas en hormigón","Se inició una evaluación de las grietas existentes en sectores de hormigón del condominio, con el objetivo de determinar su alcance y garantizar una reparación oportuna, adecuada y de buena calidad.","Infraestructura","Evaluación")' tabindex="0">
+<div class="project-top"><div class="project-icon"><i class="fa-solid fa-road"></i></div><span class="status evaluation">Evaluación</span></div>
+<h3>Evaluación de grietas en hormigón</h3>
+<div class="project-footer"><span>Infraestructura</span><span><i class="fa-regular fa-eye"></i> Ver descripción</span></div>
+</article>
 <article class="project" data-category="infra" onclick='openProjectModal("Implementación toldo vela área niños","Se realizaron propuestas y distintas gestiones para evaluar la instalación de toldo vela en la sección de juegos de niños. Finalmente, la comunidad decidió no continuar con el proyecto debido al costo que este implicaba.","Infraestructura","No aprobado")' onkeydown='if(event.key==="Enter"||event.key===" ") openProjectModal("Implementación toldo vela área niños","Se realizaron propuestas y distintas gestiones para evaluar la instalación de toldo vela en la sección de juegos de niños. Finalmente, la comunidad decidió no continuar con el proyecto debido al costo que este implicaba.","Infraestructura","No aprobado")' tabindex="0">
 <div class="project-top">
 <div class="project-icon"><i class="fa-solid fa-umbrella-beach"></i></div>
@@ -2455,6 +2475,11 @@ body.report-open .period-cover{display:none}
 <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
 </div>
 </article>
+<article class="project" data-category="seguridad" onclick='openProjectModal("Seguimiento y utilización de estacionamientos de visitas","Durante el período se realizó seguimiento a la utilización de los estacionamientos destinados a visitas, con el objeto de verificar su uso adecuado y el cumplimiento de las normas establecidas para estos espacios, como tarea de los guardias y la administración.","Seguridad","En proceso")' onkeydown='if(event.key==="Enter"||event.key===" ") openProjectModal("Seguimiento y utilización de estacionamientos de visitas","Durante el período se realizó seguimiento a la utilización de los estacionamientos destinados a visitas, con el objeto de verificar su uso adecuado y el cumplimiento de las normas establecidas para estos espacios, como tarea de los guardias y la administración.","Seguridad","En proceso")' tabindex="0">
+<div class="project-top"><div class="project-icon"><i class="fa-solid fa-square-parking"></i></div><span class="status progress">En proceso</span></div>
+<h3>Seguimiento y utilización de estacionamientos de visitas</h3>
+<div class="project-footer"><span>Seguridad</span><span><i class="fa-regular fa-eye"></i> Ver descripción</span></div>
+</article>
 <article class="project" data-category="admin" onclick='openProjectModal("Actualización del Reglamento de Copropiedad","Se llevó adelante el proceso de actualización del Reglamento de Copropiedad mediante consulta escrita, modernizando las normas que regulan la comunidad.","Administración","Realizado")' onkeydown='if(event.key==="Enter"||event.key===" " ) openProjectModal("Actualización del Reglamento de Copropiedad","Se llevó adelante el proceso de actualización del Reglamento de Copropiedad mediante consulta escrita, modernizando las normas que regulan la comunidad.","Administración","Realizado")' tabindex="0">
 <div class="project-top">
 <div class="project-icon"><i class="fa-solid fa-file-signature"></i></div>
@@ -2498,6 +2523,16 @@ body.report-open .period-cover{display:none}
 <span>Administración</span>
 <span><i class="fa-regular fa-eye"></i> Ver descripción</span>
 </div>
+</article>
+<article class="project" data-category="admin" onclick='openProjectModal("Cambio de administración","Durante el período se realizó el cambio de administración, debido a dificultades de coordinación, tiempos de respuesta y falta de acompañamiento observadas con la administración anterior. Tras 3 a 4 meses de trabajo con la nueva administración, se ha logrado una coordinación fluida, buena respuesta, apoyo constante al Comité, propuestas de mejora y emisión de los gastos comunes en fecha. El 8 de octubre se realizará la asamblea de ratificación.","Administración","Realizado")' onkeydown='if(event.key==="Enter"||event.key===" ") openProjectModal("Cambio de administración","Durante el período se realizó el cambio de administración, debido a dificultades de coordinación, tiempos de respuesta y falta de acompañamiento observadas con la administración anterior. Tras 3 a 4 meses de trabajo con la nueva administración, se ha logrado una coordinación fluida, buena respuesta, apoyo constante al Comité, propuestas de mejora y emisión de los gastos comunes en fecha. El 8 de octubre se realizará la asamblea de ratificación.","Administración","Realizado")' tabindex="0">
+<div class="project-top"><div class="project-icon"><i class="fa-solid fa-building-user"></i></div><span class="status done">Realizado</span></div>
+<h3>Cambio de administración</h3>
+<div class="project-footer"><span>Administración</span><span><i class="fa-regular fa-eye"></i> Ver descripción</span></div>
+</article>
+<article class="project" data-category="admin" onclick='openProjectModal("Gestiones ante Juzgado de Policía Local","Durante el período informado, el Comité, en coordinación con la Administración, ha realizado gestiones ante el Juzgado de Policía Local en relación con una denuncia vinculada al cumplimiento de las normas aplicables al condominio. Esta gestión ha requerido coordinación y dedicación de tiempo por parte del Comité y la Administración, encontrándose actualmente en seguimiento. Por resguardo de la privacidad de las personas involucradas, este informe no incorpora nombres ni antecedentes personales. El Comité continuará realizando el seguimiento correspondiente hasta el cierre de la gestión. El 8 de octubre del presente año está programada la audiencia final, instancia en la que se entregarán los antecedentes solicitados.","Administración","En proceso")' onkeydown='if(event.key==="Enter"||event.key===" ") openProjectModal("Gestiones ante Juzgado de Policía Local","Durante el período informado, el Comité, en coordinación con la Administración, ha realizado gestiones ante el Juzgado de Policía Local en relación con una denuncia vinculada al cumplimiento de las normas aplicables al condominio. Esta gestión ha requerido coordinación y dedicación de tiempo por parte del Comité y la Administración, encontrándose actualmente en seguimiento. Por resguardo de la privacidad de las personas involucradas, este informe no incorpora nombres ni antecedentes personales. El Comité continuará realizando el seguimiento correspondiente hasta el cierre de la gestión. El 8 de octubre del presente año está programada la audiencia final, instancia en la que se entregarán los antecedentes solicitados.","Administración","En proceso")' tabindex="0">
+<div class="project-top"><div class="project-icon"><i class="fa-solid fa-scale-balanced"></i></div><span class="status progress">En proceso</span></div>
+<h3>Gestiones ante Juzgado de Policía Local</h3>
+<div class="project-footer"><span>Administración</span><span><i class="fa-regular fa-eye"></i> Ver descripción</span></div>
 </article>
 </div>
 </section>
@@ -2716,10 +2751,10 @@ body.report-open .period-cover{display:none}
 <p class="section-desc">Integrantes actuales del Comité de Administración.</p>
 </div>
 <div class="people-grid">
-<div class="person"><div class="avatar">LT</div><h3>Lorena Zamora</h3><p>Casa 82</p></div>
+<div class="person"><div class="avatar">LT</div><h3>Lorena Trinidad</h3><p>Casa 8X</p></div>
 <div class="person"><div class="avatar">FT</div><h3>Francisco Torrealba</h3><p>Casa 15</p></div>
 <div class="person"><div class="avatar">FA</div><h3>Felipe Alarcón</h3><p>Casa 23</p></div>
-<div class="person"><div class="avatar">RG</div><h3>Raúl Castro</h3><p>Casa 86</p></div>
+<div class="person"><div class="avatar">RG</div><h3>Raúl GTD</h3><p>Casa 8X</p></div>
 <div class="person"><div class="avatar">DB</div><h3>Daniel Bautista</h3><p>Casa 17</p></div>
 </div>
 </section>
@@ -2733,9 +2768,12 @@ body.report-open .period-cover{display:none}
 <p class="section-desc">Empresas que participan en la operación y mantención del condominio.</p>
 </div>
 <div class="suppliers">
-<div class="supplier"><div class="supplier-icon"><i class="fa-solid fa-building-user"></i></div><h3>BHG Management</h3><p>Administración</p><span class="email">Correo pendiente</span></div>
-<div class="supplier"><div class="supplier-icon"><i class="fa-solid fa-leaf"></i></div><h3>MAZ + Deco Paisajismo</h3><p>Jardinería y áreas verdes</p><span class="email">Correo pendiente</span></div>
-<div class="supplier"><div class="supplier-icon"><i class="fa-solid fa-shield-halved"></i></div><h3>FTS</h3><p>Seguridad</p><span class="email">Correo pendiente</span></div>
+<div class="supplier"><div class="supplier-icon"><i class="fa-solid fa-building-user"></i></div><h3>BHG Management</h3><p>Administración</p>
+<a class="email" href="mailto:condominiorahue@gmail.com">condominiorahue@gmail.com</a></div>
+<div class="supplier"><div class="supplier-icon"><i class="fa-solid fa-leaf"></i></div><h3>MAZ + Deco Paisajismo</h3><p>Jardinería y áreas verdes</p>
+<a class="email" href="mailto:Mazydeco@gmail.com">Mazydeco@gmail.com</a></div>
+<div class="supplier"><div class="supplier-icon"><i class="fa-solid fa-shield-halved"></i></div><h3>FTS</h3><p>Seguridad</p>
+<a class="email" href="mailto:Gerencia@grupofts.cl">Gerencia@grupofts.cl</a></div>
 </div>
 <div class="supplier-subhead">
 <div>
@@ -2745,11 +2783,14 @@ body.report-open .period-cover{display:none}
 <p>Servicios más específicos que también forman parte de la operación y mantención del condominio.</p>
 </div>
 <div class="suppliers suppliers-secondary">
-<div class="supplier supplier-small"><div class="supplier-icon"><i class="fa-solid fa-bolt"></i></div><h3>Domingo Díaz / Eléctrico Certificado</h3><p>Trabajos y mantenciones eléctricas.</p><span class="email">Correo pendiente</span></div>
+<div class="supplier supplier-small"><div class="supplier-icon"><i class="fa-solid fa-bolt"></i></div><h3>Domingo Díaz / Eléctrico Certificado</h3><p>Trabajos y mantenciones eléctricas.</p>
+<a class="email" href="mailto:Domingodiazdelvalle@gmail.com">Domingodiazdelvalle@gmail.com</a></div>
 <div class="supplier supplier-small"><div class="supplier-icon"><i class="fa-solid fa-elevator"></i></div><h3>Armando Galarce (EB servicios)</h3><p>Servicio de camión con elevador para trabajos en altura.</p><span class="email">Correo pendiente</span></div>
-<div class="supplier supplier-small"><div class="supplier-icon"><i class="fa-solid fa-trash-can"></i></div><h3>Caleu Distribuidora RyS Ltda</h3><p>Artículos de aseo y oficina para la operación del condominio.</p><span class="email">Correo pendiente</span></div>
+<div class="supplier supplier-small"><div class="supplier-icon"><i class="fa-solid fa-box"></i></div><h3>Caleu</h3><p>Artículos de aseo y oficina.</p><span class="email">Correo pendiente</span></div>
+<div class="supplier supplier-small"><div class="supplier-icon"><i class="fa-solid fa-boxes-stacked"></i></div><h3>Distribuidora RyS Ltda</h3><p>Artículos de aseo y oficina.</p><span class="email">Correo pendiente</span></div>
 <div class="supplier supplier-small"><div class="supplier-icon"><i class="fa-solid fa-fire-flame-simple"></i></div><h3>Servígas</h3><p>Inspección y servicios asociados a instalaciones de gas.</p><span class="email">Correo pendiente</span></div>
-<div class="supplier supplier-small"><div class="supplier-icon"><i class="fa-solid fa-microchip"></i></div><h3>Kilobyte</h3><p>Corrientes débiles, circuitos electrónicos, portón y barreras.</p><span class="email">Correo pendiente</span></div>
+<div class="supplier supplier-small"><div class="supplier-icon"><i class="fa-solid fa-microchip"></i></div><h3>Kilobyte</h3><p>Corrientes débiles, circuitos electrónicos, portón y barreras.</p>
+<a class="email" href="mailto:Acustodiod@kilobyte.cl">Acustodiod@kilobyte.cl</a></div>
 <div class="supplier supplier-small"><div class="supplier-icon"><i class="fa-solid fa-id-card"></i></div><h3>Altasec</h3><p>Sticker tag y servicios asociados al control de acceso.</p><span class="email">Correo pendiente</span></div></div>
 </section>
 <!-- Estado -->
@@ -2764,33 +2805,33 @@ body.report-open .period-cover{display:none}
 <div class="overall-state">
 <div class="overall-state-icon"><i class="fa-solid fa-chart-pie"></i></div>
 <div>
-<strong>90,5% de las gestiones realizadas</strong>
-<small>38 de 42 gestiones realizadas; 2 permanecen en proceso y 2 no fueron aprobadas.</small>
+<strong>83,0% de las gestiones realizadas</strong>
+<small>39 de 47 gestiones realizadas; 5 permanecen en proceso, 1 está en evaluación y 2 no fueron aprobadas.</small>
 </div>
 </div>
 <div class="management">
 <div class="panel">
 <h3>Avance por área</h3>
 <div class="progress-row">
-<div class="progress-label"><span>Infraestructura</span><span>84,2%</span></div>
-<div class="progress-bar"><div class="progress-fill" data-width="84.2105%" style="width:0"></div></div>
+<div class="progress-label"><span>Infraestructura</span><span>76,2%</span></div>
+<div class="progress-bar"><div class="progress-fill" data-width="76.1905%" style="width:0"></div></div>
 </div>
 <div class="progress-row">
 <div class="progress-label"><span>Áreas verdes y espacios comunes</span><span>100%</span></div>
 <div class="progress-bar"><div class="progress-fill" data-width="100%" style="width:0"></div></div>
 </div>
 <div class="progress-row">
-<div class="progress-label"><span>Seguridad y control de acceso</span><span>91,7%</span></div>
-<div class="progress-bar"><div class="progress-fill" data-width="91.6667%" style="width:0"></div></div>
+<div class="progress-label"><span>Seguridad y control de acceso</span><span>84,6%</span></div>
+<div class="progress-bar"><div class="progress-fill" data-width="84.6154%" style="width:0"></div></div>
 </div>
 <div class="progress-row">
-<div class="progress-label"><span>Administración y gestión</span><span>100%</span></div>
-<div class="progress-bar"><div class="progress-fill" data-width="100%" style="width:0"></div></div>
+<div class="progress-label"><span>Administración y gestión</span><span>83,3%</span></div>
+<div class="progress-bar"><div class="progress-fill" data-width="83.3333%" style="width:0"></div></div>
 </div>
 </div>
 <div class="panel">
 <h3>Cómo leer este resultado</h3>
-<p style="color:var(--muted);font-size:0.95rem">El porcentaje general se calcula sobre las 42 gestiones registradas en este informe: 38 realizadas, 2 en proceso y 2 no aprobadas.</p>
+<p style="color:var(--muted);font-size:0.95rem">El porcentaje general se calcula sobre las 47 gestiones registradas en este informe: 39 realizadas, 5 en proceso, 1 en evaluación y 2 no aprobadas.</p>
 <div style="margin-top:24px;padding:20px;border-radius:16px;background:#f4f7fb; border:1px solid var(--border);">
 <strong style="display:block;margin-bottom:8px;color:var(--navy);">
 <i class="fa-solid fa-magnifying-glass"></i> Transparencia
@@ -2826,7 +2867,7 @@ body.report-open .period-cover{display:none}
 <p id="maintenanceIntro" style="font-size:0.9rem;"></p><div class="maintenance-modal-info"><span id="maintenanceNext"><i class="fa-regular fa-calendar"></i> Próxima: —</span><span id="maintenanceFrequency"><i class="fa-solid fa-rotate"></i> Frecuencia: —</span></div>
 <div class="year-calendar"><div class="year-row-title">2026</div><div class="year-row" id="calendar2026"></div><div class="year-row-title">2027</div><div class="year-row" id="calendar2027"></div><div class="year-row-title">2028</div><div class="year-row" id="calendar2028"></div></div>
 <div class="calendar-legend"><span><i class="fa-solid fa-circle-check"></i> Realizada</span><span><i class="fa-solid fa-clock"></i> Próxima</span><span><i class="fa-solid fa-calendar-check"></i> Programada</span><span><i class="fa-regular fa-circle"></i> Sin fecha definida</span></div>
-<div class="maintenance-modal-note">Las fechas mostradas se basan en la próxima mantención y la periodicidad informada para cada servicio.</div>
+<div class="maintenance-modal-note">Las fechas verdes corresponden a la última mantención calculada a partir de la fecha próxima y la periodicidad informadas; las fechas siguientes muestran la programación esperada.</div>
 </div>
 </div>
 <script>
@@ -2898,6 +2939,7 @@ body.report-open .period-cover{display:none}
         const st = document.getElementById('modalStatus');
         if(status === 'Finalizado') { st.style.background = '#e7f8f0'; st.style.color = '#13865d'; }
         else if(status === 'En ejecución' || status === 'Gestionándose' || status === 'En proceso') { st.style.background = '#fff3df'; st.style.color = '#b66b12'; }
+        else if(status === 'Evaluación') { st.style.background = '#eef2ff'; st.style.color = '#4f46e5'; }
         else if(status === 'No ejecutado' || status === 'No aprobado') { st.style.background = '#fbe9e9'; st.style.color = '#b94a4a'; }
         else { st.style.background = '#f1f5f9'; st.style.color = 'var(--navy)'; }
 
@@ -2928,12 +2970,17 @@ body.report-open .period-cover{display:none}
     function scheduleForYear(d, year){
         const map = {};
         if(!d.start) return map;
-        let idx = monthKey(d.start[0], d.start[1]);
+        const first = monthKey(d.start[0], d.start[1]);
+        let idx = first - d.interval;
         const end = monthKey(2028,12);
         while(idx <= end){
             const y = Math.floor(idx/12);
             const m = (idx % 12) + 1;
-            if(y === year) map[m] = (y === d.start[0] && m === d.start[1]) ? 'next' : 'scheduled';
+            if(y === year){
+                if(idx === first - d.interval) map[m] = 'done';
+                else if(idx === first) map[m] = 'next';
+                else if(idx > first) map[m] = 'scheduled';
+            }
             idx += d.interval;
         }
         return map;
@@ -2945,6 +2992,7 @@ body.report-open .period-cover{display:none}
             const month = i + 1;
             const state = map[month] || (d.start ? 'unknown' : 'unknown');
             let label = 'Sin fecha';
+            if(state === 'done') label = 'Realizada';
             if(state === 'next') label = 'Próxima';
             if(state === 'scheduled') label = 'Programada';
             return `<div class="calendar-cell ${state}"><div class="cm">${m}</div><div class="cs">${label}</div></div>`;
